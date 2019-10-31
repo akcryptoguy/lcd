@@ -8,6 +8,9 @@ cd lcd
 sudo sh install.sh
 ```
 
+To add a script to run as a service, enter cron and add the following:
+@reboot sudo python (TYPE IN THE LOCATION OF YOUR CRYPTOTICKER.PY FILE)
+
 You can buy one of these great little I2C LCD Displays for just £4.99 on ryanteck.uk: https://ryanteck.uk/displays/11-16x2-character-i2c-lcd-display.html
 
 ## Pin these 4 wires
