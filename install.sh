@@ -9,6 +9,7 @@ echo "Installer by Ryanteck LTD. Cloned and tweaked by Matthew Timmons-Brown for
 echo "Updating APT & Installing python-smbus, if password is asked by sudo please enter it"
 apt-get update
 apt-get install python-smbus -y
+apt-get install python-requests -y
 echo "Should now be installed, now checking revision"
 revision=`python -c "import RPi.GPIO as GPIO; print GPIO.RPI_REVISION"`
 
@@ -27,7 +28,6 @@ cp installConfigs/raspi-blacklist.conf /etc/modprobe.d/
 printf "dtparam=i2c_arm=1\n" >> /boot/config.txt
 
 
-echo "Should be now all finished. Please press any key to now reboot. After rebooting run"
-echo "'sudo python lcd.py' from this directory"
-read -n1 -s
+echo "Should be now all finished. Will reboot in 10 seconds."
+sleep 10
 sudo reboot
