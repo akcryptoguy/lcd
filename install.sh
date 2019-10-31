@@ -27,6 +27,8 @@ cp installConfigs/modules /etc/
 cp installConfigs/raspi-blacklist.conf /etc/modprobe.d/
 printf "dtparam=i2c_arm=1\n" >> /boot/config.txt
 
+sudo chmod +x /home/pi/lcd/btc_ticker.py
+
 
 echo "Should be now all finished. Will reboot in 10 seconds."
 sleep 10

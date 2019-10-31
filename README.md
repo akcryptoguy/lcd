@@ -32,12 +32,12 @@ sudo nano /etc/rc.local
 
 Then add this command to the bottom of the file, just before `exit 0` and save the file.
 ```
-sudo python /home/pi/lcd/btc-ticker.py &
+sudo python /home/pi/lcd/btc_ticker.py &
 ```
 
 The Pi will run this program at bootup, and before other services are started.  If you don’t include the ampersand and if your program runs continuously, the Pi will not complete its boot process. The ampersand allows the command to run in a separate process and continue booting with the main process running.
 
 ## Add a Crontab to Run Once Every Minute (instead of RC local)
 ```
-(crontab -l ; echo "* * * * * sudo python /home/pi/lcd/ticker-cron.py") | crontab -
+(crontab -l ; echo "* * * * * sudo python /home/pi/lcd/ticker_cron.py") | crontab -
 ```
