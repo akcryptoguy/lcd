@@ -22,8 +22,7 @@ SDA on display to pin 3 on Pi
 SCL on display to pin 5 on Pi
 ```
 
-
-## Editing rc.local
+## Edit RC Local File Configure Run a Program On Your Raspberry Pi At Startup
 
 On your Pi, edit the file /etc/rc.local using the editor of your choice. You must edit it with root permissions:
 
@@ -31,19 +30,14 @@ On your Pi, edit the file /etc/rc.local using the editor of your choice. You mus
 sudo nano /etc/rc.local
 ```
 
-Add commands to execute the python program, preferably using absolute referencing of the file location (complete file path are preferred). Be sure to leave the line exit 0 at the end, then save the file and exit. In nano, to exit, type Ctrl-x, and then Y.
-
-## Edit RC Local File Configure Run a Program On Your Raspberry Pi At Startup
-
-If your program runs continuously (runs an infinite loop) or is likely not to exit, you must be sure to fork the process by adding an ampersand (“&”) to the end of the command, like:
-
+Then add this command to the bottom of the file, just before `exit 0` and save the file.
 ```
-sudo python /home/pi/lcd/ticker-cron.py &
+sudo python /home/pi/lcd/btc-ticker.py &
 ```
 
 The Pi will run this program at bootup, and before other services are started.  If you don’t include the ampersand and if your program runs continuously, the Pi will not complete its boot process. The ampersand allows the command to run in a separate process and continue booting with the main process running.
 
-## Add a Crontab to Run Once Every Minute
+## Add a Crontab to Run Once Every Minute (instead of RC local)
 ```
 (crontab -l ; echo "* * * * * sudo python /home/pi/lcd/ticker-cron.py") | crontab -
 ```
