@@ -17,6 +17,7 @@ try:
     while True:
         display.lcd_display_string(str(datetime.datetime.now().time()), 2) # Write just the time to the display
         # Program then loops with no delay (Can be added with a time.sleep)
+        time.sleep(1)
 
 except KeyboardInterrupt: # If there is a KeyboardInterrupt (when you press ctrl+c), exit the program and cleanup
     print("Cleaning up!")
