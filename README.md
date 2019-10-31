@@ -1,8 +1,8 @@
 # LCD
 This repository contains all of the code for interfacing with a 16x2 Character I2C LCD Display. This accompanies my YouTube tutorial here: https://www.youtube.com/watch?v=fR5XhHYzUK0 
 
-```
 To install, type commands:
+```
 sudo git clone https://github.com/akcryptoguy/lcd
 cd lcd
 sudo sh install.sh
