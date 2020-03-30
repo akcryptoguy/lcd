@@ -29,6 +29,8 @@ printf "dtparam=i2c_arm=1\n" >> /boot/config.txt
 
 sudo chmod +x /home/pi/lcd/btc_ticker.py
 
+echo -e "  --> Add cron to reboot every 4 hours"
+(crontab -l ; echo "0 */4 * * * /sbin/shutdown -r now") | crontab -
 
 echo "Should be now all finished. Will reboot in 10 seconds."
 sleep 10
