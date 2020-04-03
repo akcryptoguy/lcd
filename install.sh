@@ -30,7 +30,10 @@ printf "dtparam=i2c_arm=1\n" >> /boot/config.txt
 sudo chmod +x /home/pi/lcd/btc_ticker.py
 
 echo -e "  --> Add cron to reboot every 4 hours"
-(crontab -l ; echo "0 */4 * * * /sbin/shutdown -r now") | crontab -
+(crontab -l ; echo "0 */4 * * * sudo bash /home/pi/lcd/reboot.sh") | crontab -
+
+echo -e "  --> Replace /etc/rc.local to start btc_ticker.py at startup"
+cat etc/rc.local > /etc/rc.local
 
 echo "Should be now all finished. Will reboot in 10 seconds."
 sleep 10
