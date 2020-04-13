@@ -30,6 +30,8 @@ printf "dtparam=i2c_arm=1\n" >> /boot/config.txt
 sudo chmod +x /home/pi/lcd/*.py
 sudo chmod +x /home/pi/lcd/*.sh
 
+# Modify /etc/rc.local to tell pi what script to run automatically on boot
+echo "Adding startup script to /etc/rc.local"
 cat <<EOT > /etc/rc.local
 #!/bin/sh -e
 #
