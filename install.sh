@@ -54,11 +54,10 @@ exit 0
 
 EOT
 
-echo -e "  --> Add cron to reboot every 4 hours"
+echo -e "  --> Add crons to reboot and maintain the device"
 (crontab -l ; echo "*/20 * * * * sudo bash /home/pi/lcd/checknet.sh") | crontab -
 (crontab -l ; echo "5 */1 * * * sudo bash /home/pi/lcd/btc-cron.sh") | crontab -
 (crontab -l ; echo "2 */8 * * * sudo bash /home/pi/lcd/reboot.sh") | crontab -
-
 
 echo "Should be now all finished. Will reboot in 10 seconds."
 sleep 10
