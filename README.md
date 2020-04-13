@@ -41,3 +41,10 @@ The Pi will run this program at bootup, and before other services are started.  
 ```
 (crontab -l ; echo "* * * * * sudo python /home/pi/lcd/ticker_cron.py") | crontab -
 ```
+
+
+
+## Here are some other notes on useful commands
+```
+pgrep -af python
+sudo pkill python
