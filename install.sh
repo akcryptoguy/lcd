@@ -27,10 +27,38 @@ cp installConfigs/modules /etc/
 cp installConfigs/raspi-blacklist.conf /etc/modprobe.d/
 printf "dtparam=i2c_arm=1\n" >> /boot/config.txt
 
-sudo chmod +x /home/pi/lcd/btc_ticker.py
+sudo chmod +x /home/pi/lcd/*.py
+sudo chmod +x /home/pi/lcd/*.sh
+
+cat <<EOT > /etc/rc.local
+#!/bin/sh -e
+#
+# rc.local
+#
+# This script is executed at the end of each multiuser runlevel.
+# Make sure that the script will "exit 0" on success or any other
+# value on error.
+#
+# In order to enable or disable this script just change the execution
+# bits.
+#
+# By default this script does nothing.
+
+# Print the IP address
+_IP=$(hostname -I) || true
+if [ "$_IP" ]; then
+  printf "My IP address is %s\n" "$_IP"
+fi
+sudo python /home/pi/lcd/btc_ticker.py &
+exit 0
+
+EOT
 
 echo -e "  --> Add cron to reboot every 4 hours"
-(crontab -l ; echo "0 */4 * * * /sbin/shutdown -r now") | crontab -
+(crontab -l ; echo "*/20 * * * * sudo bash /home/pi/lcd/checknet.sh") | crontab -
+(crontab -l ; echo "5 */1 * * * sudo bash /home/pi/lcd/btc-cron.sh") | crontab -
+(crontab -l ; echo "2 */8 * * * sudo bash /home/pi/lcd/reboot.sh") | crontab -
+
 
 echo "Should be now all finished. Will reboot in 10 seconds."
 sleep 10
